@@ -4,30 +4,20 @@ import Form from './components/Form';
 import Palette from './components/Palette';
 import TodoItemList from "./components/TodoItemList";
 
+const colors = ['#343a40', '#f03e3e', '#12b886', '#228ae6'];
+
 class App extends Component {
 
   id = 3; // 이미 0,1,2 가 존재하므로 3으로 설정
 
   state = {
-    colors: [
-      {id: 0, color: '#343a40'},
-      {id: 1, color: '#f03e3e'},
-      {id: 2, color: '#12b886'},
-      {id: 3, color: '#228ae6'}
-    ],
     color: '#343a40',
     input: '',
     todos: [
-      {id: 0, text: '리액트 소개', checked: false, fontColor: '#343a40'},
-      {id: 1, text: '리액트 소개', checked: true, fontColor: '#343a40'},
-      {id: 2, text: '리액트 소개', checked: false, fontColor: '#343a40'}
+      {id: 0, text: '리액트 소개', checked: false},
+      {id: 1, text: '리액트 소개', checked: true},
+      {id: 2, text: '리액트 소개', checked: false}
     ]
-  };
-
-  handleColorChange = (changeColor) => {
-    this.setState({
-      color: changeColor
-    });
   };
 
   handleChange = (e) => {
@@ -45,7 +35,7 @@ class App extends Component {
         id: this.id++,
         text: input,
         checked: false,
-        fontColor: color
+        color
       })
     });
   };
@@ -84,10 +74,16 @@ class App extends Component {
     });
   };
 
+  handleSelectColor = (changeColor) => {
+    this.setState({
+      color: changeColor
+    });
+  };
+
   render() {
-    const {colors, color, input, todos} = this.state;
+    const {color, input, todos} = this.state;
     const {
-      handleColorChange,
+      handleSelectColor,
       handleChange,
       handleCreate,
       handleKeyPress,
@@ -101,7 +97,7 @@ class App extends Component {
           <Palette
             colors={colors}
             selected={color}
-            onSelect={handleColorChange}
+            onSelect={handleSelectColor}
           />
         )}
         form={(

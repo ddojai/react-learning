@@ -5,7 +5,7 @@ const Color = ({color, active, onClick}) => {
   return (
     <div className={`color ${active ? 'active' : ''}`}
          style={{background : color}}
-         onClick={() => onClick(color)}
+         onClick={onClick}
     >
     </div>
   );
@@ -17,11 +17,11 @@ class Palette extends Component {
     const {colors, selected, onSelect} = this.props;
 
     const colorList = colors.map(
-      ({color}) => (
+      (color) => (
         <Color
           color={color}
           active={selected === color}
-          onClick={onSelect}
+          onClick={() => onSelect(color)}
           key={color}
         />
       )

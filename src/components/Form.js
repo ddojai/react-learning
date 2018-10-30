@@ -4,7 +4,7 @@ import './Form.css';
 const Form = ({value, color, onChange, onCreate, onKeyPress}) => {
   return (
     <div className="form">
-      <input value={value} style={{color: color}} onChange={onChange} onKeyPress={onKeyPress}/>
+      <input value={value} style={{color}} onChange={onChange} onKeyPress={onKeyPress}/>
       <div className="create-button" onClick={onCreate}>
         추가
       </div>
