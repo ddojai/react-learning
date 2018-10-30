@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import TodoItem from "./TodoItem";
 
 class TodoItemList extends Component {
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.todos !== nextProps.todos;
+  }
+
   render() {
     const {todos, onToggle, onRemove} = this.props;
 
@@ -9,7 +14,7 @@ class TodoItemList extends Component {
       ({id, text, checked}) => (
         <TodoItem
           id={id}
-          text={text}
+         text={text}
           checked={checked}
           onToggle={onToggle}
           onRemove={onRemove}
