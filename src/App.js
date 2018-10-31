@@ -1,11 +1,19 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import ViewerTemplate from './components/ViewerTemplate';
+import SpaceNavigator from "./components/SpaceNavigator/SpaceNavigator";
+import Viewer from "./components/Viewer/Viewer";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        App
-      </div>
+      <ViewerTemplate
+        spaceNavigator={<SpaceNavigator/>}
+        viewer={(
+          <Viewer
+            url="https://www.youtube.com/embed/uj3Lq7Gu94Y?rel=0"
+            mediaType="video"/>
+        )}
+      />
     );
   }
 }
