@@ -1,103 +1,54 @@
+import {List} from "immutable";
 import * as React from 'react';
+import {TodoItemData} from "store/modules/todos";
 import TodoItem from "./TodoItem";
 
 interface Props {
-
-}
-
-interface TodoItemData {
-  id: number;
-  text: string;
-  done: boolean;
-}
-
-interface State {
-  todoItems: TodoItemData[];  // TodoItemData로 이뤄진 배열
   input: string;
+  todoItems: List<TodoItemData>;
+
+  onCreate(): void;
+
+  onRemove(id: number): void;
+
+  onToggle(id: number): void;
+
+  onChange(e: any): void;
 }
 
-class TodoList extends React.Component<Props, State> {
-  id: number = 0;
+const TodoList: React.SFC<Props> = ({
+  input, todoItems, onCreate, onRemove, onToggle, onChange
+}) => {
+  const todoItemList = todoItems.map(
+    todo => todo ? (
+      <TodoItem
+        key={todo.id}
+        done={todo.done}
+        onToggle={() => onToggle(todo.id)}
+        onRemove={() => onRemove(todo.id)}
+        text={todo.text}
+      />
+    ) : null
+  );
 
-  state: State = {
-    input: '',
-    todoItems: [],
-  };
-
-  onToggle = (id: number): void => {
-    const {todoItems} = this.state;
-    const index = todoItems.findIndex(todo => todo.id === id);
-    const selectedItem = todoItems[index];
-    const nextItems = [... todoItems];
-
-    nextItems[index] = {
-      ...selectedItem,
-      done: !selectedItem.done,
-    };
-
-    this.setState({
-      todoItems: nextItems
-    });
-  };
-
-  onRemove = (id: number): void => {
-    this.setState(
-      ({todoItems}) => ({
-        todoItems: todoItems.filter(todo => todo.id !== id)
-      })
-    );
-  };
-
-  onChange = (e: React.FormEvent<HTMLInputElement>): void => {
-    const {value} = e.currentTarget;
-    this.setState({
-      input: value
-    });
-  };
-
-  onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault(); // 페이지 전환 막기
-    this.setState(
-      ({todoItems, input}) => ({
-        input: '',
-        todoItems: todoItems.concat({
-          id: this.id++,
-          text: input,
-          done: false
-        })
-      })
-    );
-  };
-
-  render() {
-    const {onSubmit, onChange, onToggle, onRemove} = this;
-    const {input, todoItems} = this.state;
-
-    const todoItemList = todoItems.map(
-      todo => (
-        <TodoItem
-          key={todo.id}
-          done={todo.done}
-          onToggle={() => onToggle(todo.id)}
-          onRemove={() => onRemove(todo.id)}
-          text={todo.text}
-        />
-      )
-    );
-
-    return (
-      <div>
-        <h1>오늘 뭐하지?</h1>
-        <form onSubmit={onSubmit}>
-          <input onChange={onChange} value={input}/>
-          <button type="submit">추가하기</button>
-        </form>
-        <ul>
-          {todoItemList}
-        </ul>
-      </div>
-    )
-  }
-}
+  return (
+    <div>
+      <h1>오늘 뭐하지?</h1>
+      <form
+        onSubmit={
+          (e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            onCreate();
+          }
+      }>
+        <input onChange={onChange} value={input}/>
+        <button type="submit">추가하기</button>
+      </form>
+      <ul>
+        {todoItemList}
+      </ul>
+    </div>
+  )
+};
 
 export default TodoList;
