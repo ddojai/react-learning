@@ -17,6 +17,9 @@
     ],
     "member-access": [
       false
+    ],
+    "no-empty-interface": [
+      false
     ]
   }
 }

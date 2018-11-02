@@ -11,7 +11,7 @@ class App extends React.Component {
           name="벨로퍼트"
           job="코드사랑꾼"
         />
-        <Counter counter={0}/>
+        <Counter/>
       </div>
     );
   }

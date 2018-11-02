@@ -1,25 +1,27 @@
 import * as React from 'react';
 
+interface Props {
+
+}
+
 interface State {
   counter: number;
 }
 
-class Counter extends React.Component <State> {
+class Counter extends React.Component <Props, State> {
   state: State = {
     counter: 0
   };
 
   onIncrement = (): void => {
-    const {counter} = this.state;
     this.setState(
-      () => ({ counter: counter + 1 })
+      ({counter}) => ({ counter: counter + 1 })
     );
   };
 
   onDecrement = (): void => {
-    const {counter} = this.state;
     this.setState(
-      () => ({ counter: counter - 1 })
+      ({counter}) => ({ counter: counter - 1 })
     );
   };
 
