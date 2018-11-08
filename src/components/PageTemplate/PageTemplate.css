@@ -1,0 +1,45 @@
+/*
+Error: Invalid US-ASCII character "\xEA"
+        on line 7 of PageTemplate.scss
+
+2:   margin-top: 5rem;
+3:   margin-left: auto;
+4:   margin-right: auto;
+5:   width: 500px;
+6:   background: white;
+7:   // 그림자를 띄워 줍니다.
+8:   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+9:   padding-top: 2rem;
+10: }
+11: 
+12: // 웹 브라우저의 크기가 768px 미만일 때는
+
+Backtrace:
+PageTemplate.scss:7
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/util.rb:1043:in `rescue in block in find_encoding_error'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/util.rb:1040:in `block in find_encoding_error'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/util.rb:1039:in `each'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/util.rb:1039:in `each_with_index'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/util.rb:1039:in `find_encoding_error'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/util.rb:767:in `check_sass_encoding'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/engine.rb:444:in `check_encoding!'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/engine.rb:400:in `_to_tree'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:209:in `each'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/plugin.rb:82:in `update_stylesheets'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/exec/base.rb:52:in `parse'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/lib/sass/exec/base.rb:19:in `parse!'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.6/bin/scss:13:in `<top (required)>'
+/usr/local/bin/scss:22:in `load'
+/usr/local/bin/scss:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid US-ASCII character \"\xEA\"\A         on line 7 of PageTemplate.scss\A \A 2:   margin-top: 5rem;\A 3:   margin-left: auto;\A 4:   margin-right: auto;\A 5:   width: 500px;\A 6:   background: white;\A 7:   // 그림자를 띄워 줍니다.\A 8:   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);\A 9:   padding-top: 2rem;\A 10: }\A 11: \A 12: // 웹 브라우저의 크기가 768px 미만일 때는"; }
