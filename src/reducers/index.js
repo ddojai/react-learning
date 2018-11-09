@@ -1,11 +1,69 @@
-import number from './number';
-import color from './color';
+import * as types from '../actions/ActionTypes';
 
-import {combineReducers} from 'redux';
+const initialState = {
+  counters: [
+    {
+      color: 'black',
+      number: 0
+    }
+  ]
+};
 
-const reducers = combineReducers({
-  numberData: number,
-  colorData: color
-});
+function counter(state = initialState, action) {
+  // 레퍼런스 생성
+  const {counters} = state;
 
-export default reducers;
+  switch (action.type) {
+    case types.CREATE:
+      return {
+        counters: [
+          ...counters,
+          {
+            color: action.color,
+            number: 0
+          }
+        ]
+      };
+    case types.REMOVE:
+      return {
+        counters: counters.slice(0, counters.length - 1)
+      };
+    case types.INCREMENT:
+      return {
+        counters: [
+          ...counters.slice(0, action.index),
+          {
+            ...counters[action.index], //기존 객체에
+            number: counters[action.index].number + 1 // 새 number 값 덮어쓰기
+          },
+          ...counters.slice(action.index + 1, counters.length)
+        ]
+      };
+    case types.DECREMENT:
+      return {
+        counters: [
+          ...counters.slice(0, action.index),
+          {
+            ...counters[action.index], //기존 객체에
+            number: counters[action.index].number - 1 // 새 number 값 덮어쓰기
+          },
+          ...counters.slice(action.index + 1, counters.length)
+        ]
+      };
+    case types.SET_COLOR:
+      return {
+        counters: [
+          ...counters.slice(0, action.index),
+          {
+            ...counters[action.index], //기존 객체에
+            color: action.color
+          },
+          ...counters.slice(action.index + 1, counters.length)
+        ]
+      };
+    default:
+      return state;
+  }
+}
+
+export default counter;
