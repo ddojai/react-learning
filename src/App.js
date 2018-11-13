@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {Route} from 'react-router-dom';
+import {Home, About} from 'pages';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        리액트 라우터를 배워봅시다.
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div>
+      <Route exact path = '/' component={Home}/>
+      <Route path = '/about/:name?' component={About}/>
+    </div>
+  )
+};
 
 export default App;
