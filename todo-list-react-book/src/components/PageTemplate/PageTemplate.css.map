@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,cAAe;EACb,UAAU,EAAE,IAAI;EAChB,WAAW,EAAE,IAAI;EACjB,YAAY,EAAE,IAAI;EAClB,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,KAAK",
-"sources": ["PageTemplate.scss"],
-"names": [],
-"file": "PageTemplate.css"
-}
