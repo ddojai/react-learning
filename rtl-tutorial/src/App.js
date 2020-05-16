@@ -1,8 +1,8 @@
 import React from "react";
-import Counter from "./Counter";
+import UserProfile from "./UserProfile";
 
 const App = () => {
-  return <Counter />;
+  return <UserProfile id={1}/>;
 };
 
 export default App;
