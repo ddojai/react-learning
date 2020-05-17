@@ -1,8 +1,11 @@
 import React from 'react';
-import ReducerSample from './ReducerSample';
+import MyFrom from './MyFrom';
 
 const App: React.FC = () => {
-  return <ReducerSample/>
+  const onSubmit = (form: { name: string; description: string}) => {
+    console.log(form);
+  };
+  return <MyFrom onSubmit={onSubmit} />;
 };
 
 export default App;
