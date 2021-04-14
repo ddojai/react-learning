@@ -1,18 +1,11 @@
 import { combineReducers } from 'redux';
-import { all } from 'redux-saga/effects'
 import counter, { counterSaga } from './counter';
-import sample, { sampleSage } from './sample';
-import loading from './loading';
+import posts, { postsSaga } from './posts';
+import { all } from 'redux-saga/effects';
 
-const rootReducer = combineReducers({
-  counter,
-  sample,
-  loading
-});
-
+const rootReducer = combineReducers({ counter, posts });
 export function* rootSaga() {
-  // all 함수는 여러 사가를 합쳐 주는 역할을 합니다.
-  yield all([counterSaga(), sampleSage()]);
+  yield all([counterSaga(), postsSaga()]); // all 은 배열 안의 여러 사가를 동시에 실행시켜줍니다.
 }
 
 export default rootReducer;
