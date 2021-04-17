@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-type Action = { type: 'INCREASE' } | { type: 'DECREASE' };
+type Action = { type: 'INCREASE' } | { type: 'DECREASE' }; // 이렇게 액션을 | 으로 연달아서 쭉 나열하세요.
 
 function reducer(state: number, action: Action): number {
   switch (action.type) {
@@ -17,7 +17,7 @@ function Counter() {
   const [count, dispatch] = useReducer(reducer, 0);
   const onIncrease = () => dispatch({ type: 'INCREASE' });
   const onDecrease = () => dispatch({ type: 'DECREASE' });
-  
+
   return (
     <div>
       <h1>{count}</h1>

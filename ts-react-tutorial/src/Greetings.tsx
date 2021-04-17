@@ -4,7 +4,7 @@ type GreetingsProps = {
   name: string;
   mark: string;
   optional?: string;
-  onClick: (name: string) => void; // 아무것도 리턴하지 않는다는 함수를 의미
+  onClick: (name: string) => void; // 아무것도 리턴하지 않는다는 함수를 의미합니다.
 };
 
 function Greetings({ name, mark, optional, onClick }: GreetingsProps) {
